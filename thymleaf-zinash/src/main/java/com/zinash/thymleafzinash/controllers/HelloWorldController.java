@@ -13,6 +13,10 @@ import java.util.List;
 @Controller
 public class HelloWorldController {
 
+    @RequestMapping("/h")
+    public String home(){
+        return "index";
+    }
     @RequestMapping("/hello")
     public String helloWorld(Model model){
         model.addAttribute("message", "Hello World");
