@@ -1,0 +1,4 @@
+function demo(){
+alert("Thymeleaf with CSS and JS");
+console.log("Hello");
+}
