@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.zinash</groupId>
-	<artifactId>thymleaf-zinash</artifactId>
+	<artifactId>thymeleaf-zinash</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>thymleaf-zinash</name>
 	<description>Demo project for Spring Boot</description>
