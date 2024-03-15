@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 public class HelloWorldController {
 
-    @RequestMapping("/h")
+    @RequestMapping("/")
     public String home(){
         return "index";
     }
