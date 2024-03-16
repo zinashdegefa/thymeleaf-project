@@ -73,17 +73,25 @@ public class HelloWorldController {
     @RequestMapping("/saveNewData")
     public String saveNewData(@ModelAttribute("user") User user){
        //add to database
-        //make get all users call
         System.out.println("User: " + user);
         return "redirect:/hello";
     }
 
     @RequestMapping("/updateData/{id}")
     public String updateData(@PathVariable int id, Model model){
-        //get from database using the id to prepopulate the form for update
-        System.out.println("Id: " + id);
+        //get from database using the id to prepopulate the form for update here
+
+        System.out.println("Id: " + id); // print id for debug
         User user = User.builder().id(1).firstName("Metages").lastName("Firheta").role("Guest").build();
 model.addAttribute("user", user);
         return "update-data";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteData(@PathVariable int id, Model model){
+        //make a call to database to delete the user here
+
+        System.out.println("Deleted Id: " + id); // just print the id for debug
+        return "redirect:/hello";
     }
 }
