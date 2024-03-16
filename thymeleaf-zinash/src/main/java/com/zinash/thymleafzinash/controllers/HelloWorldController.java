@@ -3,9 +3,7 @@ package com.zinash.thymleafzinash.controllers;
 import com.zinash.thymleafzinash.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +17,15 @@ public class HelloWorldController {
     }
     @RequestMapping("/hello")
     public String helloWorld(Model model){
-        model.addAttribute("message", "Hello World");
+        List<User> userList = new ArrayList<>();
+        User user1 = User.builder().id(1).firstName("Metages").lastName("Firheta").role("Manager").build();
+        User user2 = User.builder().id(2).firstName("Zinash").lastName("Degefa").role("Employee").build();
+        User user3 = User.builder().id(3).firstName("Barkot").lastName("Gashe").role("NA").build();
+
+        userList.add(user1);
+        userList.add(user2);
+        userList.add(user3);
+        model.addAttribute("users", userList);
         return "helloworld";
     }
 
@@ -55,5 +61,29 @@ public class HelloWorldController {
         User user = User.builder().id(1).firstName("Metages").lastName("Firheta").role("Guest").build();
         model.addAttribute("user", user);
         return "switch-case";
+    }
+
+    @RequestMapping("/addNewData")
+    public String addNewData(Model model){
+        User user = new User();
+        model.addAttribute("user", user);
+        return "add-new-data";
+    }
+
+    @RequestMapping("/saveNewData")
+    public String saveNewData(@ModelAttribute("user") User user){
+       //add to database
+        //make get all users call
+        System.out.println("User: " + user);
+        return "redirect:/hello";
+    }
+
+    @RequestMapping("/updateData/{id}")
+    public String updateData(@PathVariable int id, Model model){
+        //get from database using the id to prepopulate the form for update
+        System.out.println("Id: " + id);
+        User user = User.builder().id(1).firstName("Metages").lastName("Firheta").role("Guest").build();
+model.addAttribute("user", user);
+        return "update-data";
     }
 }
